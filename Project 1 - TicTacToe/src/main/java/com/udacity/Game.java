@@ -150,7 +150,49 @@ public class Game {
      */
     public String checkGameWinner(char [][]grid){
         String result = "None";
-        //Student code goes here ...
+        int row = grid.length;
+        int volume = grid[0].length;
+
+        //error check
+        if (row != volume) return "error";
+
+
+        //Check line1
+        if(grid[0][0] == grid[0][1] && grid[0][1] == grid[0][2] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+            //Check line2
+        else if(grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+            //check line3
+        else if(grid[0][0] == grid[1][0] && grid[1][0] == grid[2][0] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+            //check line4
+        else if(grid[0][1] == grid[1][1] && grid[1][1] == grid[2][1] && grid[0][1] != '-') result = grid[0][1] + " wins";
+
+            //check line5
+        else if(grid[0][2] == grid[1][2] && grid[1][2] == grid[2][2] && grid[0][2] != '-') result = grid[0][2] + " wins";
+
+            //check line6
+        else if(grid[1][0] == grid[1][1] && grid[1][1] == grid[1][2] && grid[1][0] != '-') result = grid[1][0] + " wins";
+
+            //check line7
+        else if(grid[2][0] == grid[2][1] && grid[2][1] == grid[2][2] && grid[2][0] != '-') result = grid[2][0] + " wins";
+
+            //check line8
+        else if(grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2] && grid[0][2] != '-') result = grid[0][2] + " wins";
+
+        else {
+            //Check Tie
+            boolean isTie = true;
+            for (int i = 0; i < row && isTie != false; i++) {
+                for (int j = 0; j < volume && isTie != false; j++) {
+                    if (grid[i][j] == '-') isTie = false;
+                }
+            }
+
+            if (isTie == true) return ("Tie");
+        }
+
         return result;
     }
 
